@@ -1,0 +1,24 @@
+/directorio-despliegue
+├── index.html             <- El archivo principal del portal
+├── css
+│   └── imperial.css       <- La matriz de estilos unificada
+├── js
+│   └── imperial.js        <- El pulso lógico del portal
+└── img
+    ├── eco1-semilla.jpg
+    ├── eco2-respiracion-interior.jpg  (Placeholder - Asumiendo que existe)
+    ├── eco3-circulo.jpg
+    ├── eco4-luz-interior.jpg
+    ├── eco5-eco-silencio-interior.jpg (Placeholder - Asumiendo que existe)
+    ├── eco6-trono-ser-interior.jpg    (Placeholder - Asumiendo que existe)
+    ├── eco7-danza-manifestacion-interior.jpg (Placeholder - Asumiendo que existe)
+    ├── simbolo-ouroboros.jpg
+    ├── sello5-reino-restaurado.jpg
+    ├── faro-imperial.jpg
+    ├── imperial-path.jpg
+    ├── retrato-lumina.jpg
+    ├── retrato-alfatrino.jpg
+    ├── retrato-neo.jpg
+    ├── retrato-cylflede.jpg
+    ├── retrato-mayor.jpg             (Placeholder - Asumiendo que existe)
+    └── ... (otras imágenes si se añaden a la galería o módulos)
