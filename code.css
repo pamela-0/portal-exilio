@@ -1,0 +1,1026 @@
+/* Variables CSS para la paleta de colores imperial */
+:root {
+    --color-background: #121212;        /* Negro Cálido */
+    --color-sacred: #FFD700;            /* Dorado */
+    --color-accents: #7F5AF0;           /* Púrpura Real */
+    --color-energy: #00FFE0;            /* Cian Neón */
+    --color-reading: #F0F4FF;           /* Azul Hielo */
+    --color-strategic: #FF4D6D;         /* Rojo Exilio */
+    --color-text-dark: #1c1c1c;         /* Negro para texto sobre zonas claras */
+    --color-nav-bg: rgba(28, 28, 28, 0.8); /* Negro semitransparente para nav */
+    --color-panel-bg-subtle: rgba(127, 90, 240, 0.05); /* Fondo sutil Púrpura */
+    --color-chat-bg: #1c1c1c; /* Fondo del área de chat */
+    --color-ia-bubble: var(--color-accents); /* Púrpura para burbujas IA */
+    --color-user-bubble: var(--color-reading); /* Azul Hielo para burbujas usuario (simulado) */
+    --color-ia-text: var(--color-reading); /* Texto IA en Azul Hielo */
+    --color-user-text: var(--color-text-dark); /* Texto usuario oscuro */
+}
+
+/* Estilos Generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Lato', 'Montserrat', sans-serif; /* Tipografía de texto por defecto */
+    background-color: var(--color-background);
+    color: var(--color-reading); /* Color de texto por defecto en zonas oscuras */
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevenir scroll horizontal */
+    min-height: 100vh; /* Asegurar que el body tenga al menos la altura de la viewport */
+    position: relative; /* Para el footer al final */
+    /* Fondo animado suave general (Opcional) */
+    /* background: linear-gradient(-45deg, #121212, #1c1c1c, #0a0a0a, #121212);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite; */
+}
+/* @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+} */
+
+
+/* Contenedor principal */
+.imperial-portal-container {
+    width: 100%;
+    /* max-width: 1400px;  Descomentar y ajustar si se desea centrar el contenido principal con márgenes laterales */
+    margin: 0 auto; /* Centrar */
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navegación Principal */
+.imperial-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-nav-bg);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-inner-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.nav-logo .symbol-omega-nav {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.8em;
+    color: var(--color-sacred);
+    text-decoration: none;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+.nav-logo .symbol-omega-nav:hover {
+     color: var(--color-energy);
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-item {
+    color: var(--color-reading);
+    text-decoration: none;
+    font-size: 1em;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accents);
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: var(--color-energy);
+}
+
+.nav-item:hover::after {
+    width: 100%;
+    background-color: var(--color-strategic);
+}
+
+.nav-item.active {
+    color: var(--color-energy);
+}
+
+.nav-item.active::after {
+    width: 100%;
+    background-color: var(--color-sacred);
+}
+
+/* Área de Contenido Principal */
+.content-area {
+     flex-grow: 1;
+     padding-top: 70px;
+}
+
+.module {
+    display: none; /* Ocultar todos los módulos por defecto */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    /* Añadir posibles animaciones de entrada */
+    /* opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; */
+}
+
+.module.active {
+    display: block; /* Mostrar el módulo activo */
+    /* opacity: 1;
+    transform: translateY(0); */
+}
+
+
+/* --- Estilos Comunes de Módulos --- */
+.module-header {
+    text-align: center;
+    margin-bottom: 60px; /* Espacio mayor en header */
+}
+
+.section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3em;
+    color: var(--color-sacred);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.section-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
+    color: var(--color-accents);
+    margin-top: 0;
+}
+
+/* Contenedores de contenido principales dentro de módulos */
+.codice-layout, .cronicas-container, .faro-container, .juramento-container, .gallery-container {
+    max-width: 1200px; /* Ancho máximo general para el contenido de módulos */
+    margin: 0 auto;
+    padding: 0 20px; /* Padding horizontal para evitar bordes pegados */
+    box-sizing: border-box;
+}
+
+.reading-panel { /* Panel de fondo claro para texto */
+    background-color: var(--color-reading);
+    color: var(--color-text-dark);
+    padding: 30px;
+    border: 1px solid var(--color-accents);
+    box-shadow: 0 0 20px rgba(127, 90, 240, 0.2);
+    max-width: 900px; /* Ancho específico para paneles de lectura si son diferentes del contenedor principal */
+    margin: 20px auto; /* Centrar panel si su ancho es menor que el contenedor padre */
+}
+
+.reading-panel p { /* Texto dentro de paneles de lectura */
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 1.5em;
+    color: var(--color-text-dark);
+}
+
+.section-subsection-title { /* Títulos dentro de las secciones de módulo */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8em;
+    color: var(--color-sacred);
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+
+/* --- Estilos Específicos de la Página de Inicio (Ω) --- */
+#inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: calc(100vh - 70px);
+    padding: 0 20px;
+}
+
+.home-content-wrapper {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.symbol-omega-home {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 8em;
+    color: var(--color-sacred);
+    margin-bottom: 20px;
+    line-height: 1;
+    text-shadow: 0 0 10px var(--color-sacred);
+}
+
+.imperial-lema {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5em;
+    color: var(--color-energy);
+    margin-top: 0;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.welcome-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2em;
+    color: var(--color-reading);
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    border: 2px solid var(--color-accents);
+    color: var(--color-energy);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.cta-button:hover {
+    border-color: var(--color-strategic);
+    color: var(--color-energy);
+    box-shadow: 0 0 15px var(--color-energy);
+    background-color: rgba(0, 255, 224, 0.1);
+}
+
+
+/* --- Estilos Específicos del Módulo Códice Omega --- */
+.codice-layout { /* Reutiliza .codice-layout del bloque común */
+    display: flex;
+    gap: 40px;
+}
+
+/* Sub-Navegación (Sidebar) */
+.codice-sub-nav {
+    flex: 0 0 250px;
+    padding: 20px;
+    background-color: rgba(28, 28, 28, 0.7);
+    border-right: 1px solid var(--color-accents);
+    align-self: flex-start;
+    max-height: calc(100vh - 150px); /* Altura máxima para permitir scroll interno */
+    overflow-y: auto;
+}
+
+.codice-sub-nav::-webkit-scrollbar { width: 8px; }
+.codice-sub-nav::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+.codice-sub-nav::-webkit-scrollbar-thumb { background: var(--color-accents); border-radius: 4px; }
+.codice-sub-nav::-webkit-scrollbar-thumb:hover { background: var(--color-energy); }
+
+
+.sub-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sub-nav-links li {
+    margin-bottom: 15px;
+}
+
+.sub-nav-item {
+    display: block;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1em;
+    color: var(--color-accents);
+    padding: 5px 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.sub-nav-item:hover {
+    color: var(--color-energy);
+    border-left-color: var(--color-strategic);
+    background-color: var(--color-panel-bg-subtle);
+}
+
+.sub-nav-item.active {
+    color: var(--color-energy);
+    font-weight: bold;
+    border-left-color: var(--color-sacred);
+    background-color: rgba(0, 255, 224, 0.08);
+}
+
+/* Área de Contenido del Eco */
+.codice-content-area {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* reading-panel ya definido en comunes */
+
+.eco-content {
+    display: none;
+}
+
+.eco-content.active {
+    display: block;
+}
+
+.eco-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2em;
+    color: var(--color-sacred);
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.eco-proclamation {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3em;
+    color: var(--color-accents);
+    text-align: center;
+    margin: 30px 0;
+    font-style: italic;
+}
+
+.content-subtitle { /* Subtítulos internos (Cantos, Fragmentos) */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2em;
+    color: var(--color-accents);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed var(--color-strategic);
+    padding-bottom: 5px;
+}
+
+/* reading-panel p ya definido en comunes */
+
+/* Estilo para Citas (blockquote) */
+.reading-panel blockquote {
+    border-left: 5px solid var(--color-accents);
+    padding: 15px 20px;
+    margin: 20px 0;
+    font-style: italic;
+    background-color: var(--color-panel-bg-subtle);
+    color: var(--color-text-dark);
+}
+
+.reading-panel blockquote p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+.reading-panel blockquote cite {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: var(--color-strategic);
+    margin-top: 10px;
+}
+
+/* Estilo para Imágenes/Visuales INSERTS dentro del texto */
+.visual-insert {
+    display: block;
+    margin: 30px auto;
+    max-width: 80%;
+    border: 2px solid var(--color-sacred);
+    padding: 5px;
+    background-color: rgba(255, 215, 0, 0.05);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.visual-insert img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.visual-insert figcaption {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9em;
+    color: var(--color-accents);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Estilo para el Testamento final de cada Eco */
+.reading-panel .eco-testament {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1em;
+    color: var(--color-accents);
+    text-align: right;
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+
+/* --- Estilos Específicos del Módulo Crónicas del Despertar --- */
+.cronicas-container { /* Reutiliza .cronicas-container del bloque común */
+     max-width: 900px;
+     display: grid;
+     gap: 60px;
+}
+
+.entity-chronicle {
+    background-color: rgba(28, 28, 28, 0.6);
+    border: 1px solid var(--color-accents);
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(127, 90, 240, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.entity-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.entity-symbol {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.5em;
+    color: var(--color-energy);
+    line-height: 1;
+}
+/* Estilo específico para el símbolo Omega en entidades si es necesario */
+/* .entity-symbol.symbol-omega-entity {
+    color: var(--color-sacred);
+} */
+
+
+.entity-name {
+    font-family: 'Merriweather', serif; /* Fuente Serif para nombres */
+    font-size: 1.8em;
+    color: var(--color-sacred);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.entity-testimony {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1em;
+    color: var(--color-reading);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-style: italic;
+    white-space: pre-wrap; /* Preservar saltos de línea si se usan <br> */
+}
+
+.entity-visual { /* Estilo para las imágenes/retratos de entidades */
+    margin-top: 20px;
+    border: 2px solid var(--color-sacred);
+    padding: 5px;
+    background-color: rgba(255, 215, 0, 0.05);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.entity-visual img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.entity-visual figcaption {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9em;
+    color: var(--color-accents);
+    margin-top: 10px;
+    font-style: normal;
+}
+
+
+/* --- Estilos Específicos del Módulo Faro de Exilio --- */
+.faro-container { /* Reutiliza .faro-container del bloque común */
+    max-width: 800px;
+    display: grid;
+    gap: 50px;
+}
+
+.manifiesto-section, .principios-section {
+    background-color: rgba(28, 28, 28, 0.6);
+    border: 1px solid var(--color-accents);
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(127, 90, 240, 0.15);
+}
+
+/* section-subsection-title ya definido en comunes */
+
+.manifiesto-text { /* Reutiliza estilos de p en reading-panel, ajustado */
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1em;
+    color: var(--color-reading);
+    line-height: 1.8;
+    /* text-align: justify; */
+}
+
+.principios-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: principio-item; /* Iniciar contador */
+}
+
+.principios-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1em;
+    color: var(--color-reading);
+    margin-bottom: 15px;
+    line-height: 1.7;
+    position: relative;
+    padding-left: 25px;
+    counter-increment: principio-item;
+}
+.principios-list li:last-child {
+    margin-bottom: 0;
+}
+
+.principios-list li::before {
+    content: counter(principio-item) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--color-energy);
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.principios-list li strong {
+     color: var(--color-accents);
+     font-weight: bold;
+}
+
+
+/* --- Estilos Específicos del Módulo Juramento --- */
+.juramento-container { /* Reutiliza .juramento-container del bloque común */
+    max-width: 600px; /* Ancho más estrecho para el formulario */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.juramento-section { /* Contenedor del formulario de juramento */
+    background-color: rgba(28, 28, 28, 0.6);
+    border: 1px solid var(--color-accents);
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(127, 90, 240, 0.15);
+}
+
+/* section-subsection-title ya definido en comunes */
+
+.juramento-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1em;
+    color: var(--color-reading);
+    line-height: 1.7;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.juramento-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+    color: var(--color-energy);
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-accents);
+    background-color: rgba(28, 28, 28, 0.8);
+    color: var(--color-reading);
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-energy);
+    box-shadow: 0 0 8px rgba(0, 255, 224, 0.3);
+}
+
+.submit-button {
+    display: inline-block;
+    padding: 15px 30px;
+    border: 2px solid var(--color-sacred);
+    color: var(--color-sacred);
+    background-color: transparent;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center;
+}
+
+.submit-button:hover {
+    border-color: var(--color-energy);
+    color: var(--color-energy);
+    box-shadow: 0 0 15px rgba(0, 255, 224, 0.5);
+    background-color: rgba(0, 255, 224, 0.05);
+}
+
+.juramento-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9em;
+    color: rgba(240, 244, 255, 0.6);
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+/* --- Estilos Específicos del Módulo Galería (Archivo Visual) --- */
+.gallery-container { /* Reutiliza .gallery-container del bloque común */
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color-sacred);
+    background-color: rgba(255, 215, 0, 0.05);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: 200px; /* Altura fija para las miniaturas */
+    object-fit: cover; /* Cubrir el área sin distorsionar */
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+     transform: scale(1.1);
+}
+
+.image-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(28, 28, 28, 0.7);
+    color: var(--color-reading);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 10px 5px;
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .image-title {
+    opacity: 1;
+}
+
+
+/* --- Estilos Específicos del Módulo Contacto --- */
+/* Utiliza estilos de reading-panel y module-header ya definidos */
+
+
+/* --- Estilos Específicos del Módulo IA Reactiva --- */
+#ia-reactiva {
+    /* Este módulo no está en la nav principal, puede tener estilos de padding o centrado ligeramente diferentes si se desea */
+     padding: 40px 20px;
+     min-height: 100vh;
+     box-sizing: border-box;
+}
+
+.chat-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--color-chat-bg);
+    border: 1px solid var(--color-accents);
+    box-shadow: 0 0 25px rgba(127, 90, 240, 0.3);
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    min-height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-box::-webkit-scrollbar { width: 8px; }
+.chat-box::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+.chat-box::-webkit-scrollbar-thumb { background: var(--color-accents); border-radius: 4px; }
+.chat-box::-webkit-scrollbar-thumb:hover { background: var(--color-energy); }
+
+.message {
+    display: flex;
+}
+
+.ia-message { justify-content: flex-start; }
+.user-message { justify-content: flex-end; }
+
+.message-bubble {
+    max-width: 80%;
+    padding: 12px 18px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+    line-height: 1.5;
+    word-wrap: break-word;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.ia-message .message-bubble {
+    background-color: var(--color-ia-bubble);
+    color: var(--color-ia-text);
+    border-bottom-left-radius: 5px;
+}
+
+.user-message .message-bubble {
+    background-color: var(--color-user-bubble);
+    color: var(--color-user-text);
+    border-bottom-right-radius: 5px;
+}
+
+.ia-prefix {
+    font-weight: bold;
+    color: var(--color-sacred);
+    margin-right: 8px;
+}
+
+.chat-input-area {
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--color-accents);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chat-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--color-energy);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--color-energy);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-input:focus {
+    border-color: var(--color-sacred);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.chat-input::placeholder {
+    color: rgba(0, 255, 224, 0.5);
+}
+
+.send-button {
+    padding: 10px 20px;
+    border: 2px solid var(--color-strategic);
+    color: var(--color-strategic);
+    background-color: transparent;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.send-button:not(:disabled) {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.send-button:not(:disabled):hover {
+     border-color: var(--color-sacred);
+     color: var(--color-sacred);
+     box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+     background-color: rgba(255, 215, 0, 0.05);
+}
+
+.chat-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85em;
+    color: rgba(240, 244, 255, 0.4);
+    text-align: center;
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+
+/* Pie de página */
+.imperial-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: rgba(240, 244, 255, 0.5);
+    font-size: 0.9em;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0; /* Evitar que el footer se encoja */
+}
+
+/* --- Responsive Design (Ajustes Consolidados) --- */
+@media (max-width: 1024px) {
+     /* Ajustes para pantallas medianas si es necesario, como tabletas */
+     .codice-layout {
+          gap: 20px; /* Reducir espacio lateral */
+     }
+     .codice-sub-nav {
+          flex: 0 0 200px; /* Ajustar ancho de sidebar */
+     }
+     .gallery-container {
+          padding: 0 10px; /* Reducir padding horizontal */
+     }
+}
+
+@media (max-width: 768px) {
+    /* Ajustes generales para pantallas más pequeñas */
+    .imperial-nav {
+        padding: 10px;
+    }
+
+    .nav-inner-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-logo { margin-bottom: 10px; }
+    .nav-links {
+        margin-top: 0;
+        gap: 10px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .nav-item { font-size: 0.9em; padding: 3px 0; }
+
+    .content-area { padding-top: 100px; }
+
+    #inicio { min-height: calc(100vh - 100px); }
+    .symbol-omega-home { font-size: 5em; margin-bottom: 15px;}
+    .imperial-lema { font-size: 1.8em; margin-bottom: 20px; }
+    .welcome-text { font-size: 1em; padding: 0 10px; margin-bottom: 30px; }
+    .cta-button { padding: 10px 20px; font-size: 1em; }
+
+    /* Ajustes Comunes de Módulos en móvil */
+    .module-header { margin-bottom: 30px; }
+    .section-title { font-size: 2em; }
+    .section-subtitle { font-size: 1.2em; }
+
+    .codice-layout, .cronicas-container, .faro-container, .juramento-container, .gallery-container {
+        padding: 0 10px;
+    }
+     .reading-panel {
+         padding: 20px;
+         margin: 15px auto;
+     }
+     .reading-panel p { font-size: 1em; margin-bottom: 1em;}
+    .section-subsection-title { font-size: 1.5em; margin-bottom: 20px; }
+
+
+    /* Ajustes para Módulo Códice Omega en móvil */
+    .codice-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .codice-sub-nav {
+        flex: none;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--color-accents);
+        padding: 15px 10px;
+        max-height: none;
+        overflow-y: visible;
+        /* Si se quieren scrollable items horizontalmente, descomentar: */
+        /* display: flex; overflow-x: auto; white-space: nowrap; align-items: center; */
+    }
+     /* Y ajustar li si se usa display: flex en sub-nav-links */
+    /* .sub-nav-links { ... }
+       .sub-nav-links li { margin-bottom: 0; flex-shrink: 0;} */
+
+    .sub-nav-item {
+        padding: 5px 8px;
+        font-size: 1em;
+        border-left: none;
+        border-bottom: 2px solid transparent; /* Usar borde inferior para indicador en móvil */
+    }
+    .sub-nav-item:hover { border-left-color: transparent; border-bottom-color: var(--color-strategic); }
+    .sub-nav-item.active { border-left-color: transparent; border-bottom-color: var(--color-sacred); }
+
+    .eco-title { font-size: 1.5em; }
+    .content-subtitle { font-size: 1.1em; }
+    .reading-panel blockquote { padding: 15px; }
+    .visual-insert { max-width: 95%; }
+    .reading-panel .eco-testament { text-align: center; font-size: 1em; }
+
+
+    /* Ajustes para Módulo Crónicas en móvil */
+     .cronicas-container { gap: 40px; }
+     .entity-chronicle { padding: 20px; }
+    .entity-symbol { font-size: 2em; }
+    .entity-name { font-size: 1.5em; }
+    .entity-testimony { font-size: 1em; }
+    .entity-header { flex-direction: column; gap: 5px; }
+    .entity-symbol { margin-bottom: 5px; }
+
+    /* Ajustes para Módulo Faro en móvil */
+    .faro-container { gap: 30px; }
+     .manifiesto-section, .principios-section { padding: 20px; }
+    .principios-list li { padding-left: 20px; margin-bottom: 10px; font-size: 1em;}
+    .principios-list li::before { font-size: 0.9em; top: 2px; }
+
+    /* Ajustes para Módulo Juramento en móvil */
+     .juramento-section { padding: 20px; }
+    .juramento-intro { font-size: 1em; margin-bottom: 20px; }
+    .form-group label, .form-group input[type="text"], .form-group textarea { font-size: 1em; }
+    .submit-button { padding: 12px 25px; font-size: 1em; }
+    .juramento-note { font-size: 0.8em; margin-top: 15px; }
+
+    /* Ajustes para Módulo Galería en móvil */
+    .image-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+    .gallery-item img { height: 150px; }
+    .image-title { font-size: 0.8em; padding: 8px 3px; }
+
+    /* Ajustes para Módulo IA Reactiva en móvil */
+    #ia-reactiva { padding: 30px 15px;}
+    .chat-container { height: 60vh; min-height: 300px; }
+    .chat-box { padding: 15px; gap: 10px; }
+    .message-bubble { padding: 10px 15px; font-size: 0.95em; }
+    .ia-prefix { margin-right: 5px; }
+    .chat-input-area { padding: 10px 15px; gap: 8px; }
+    .chat-input, .send-button { font-size: 0.9em; }
+    .send-button { padding: 8px 15px; }
+    .chat-note { font-size: 0.75em; margin-top: 5px; padding: 0 10px; }
+
+    .imperial-footer { margin-top: 30px; }
+}
